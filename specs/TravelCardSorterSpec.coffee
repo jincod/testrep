@@ -2,7 +2,8 @@ describe "TravelCardSorterSpecs", () ->
 
 	beforeEach () ->
 		@card1 =
-			type: "train 78A"
+			type: "train"
+			number: "78A"
 			from: "Madrid"
 			to: "Barcelona"
 			seat: "45B"
@@ -11,13 +12,15 @@ describe "TravelCardSorterSpecs", () ->
 			from: "Barcelona"
 			to: "Gerona Airport"
 		@card3 =
-			type: "flight SK455"
+			type: "flight"
+			number: "SK455"
 			from: "Gerona Airport"
 			to: "Stockholm"
 			seat: "3A"
 			comments: "Gate 45B. Baggage drop at ticket counter 344."
 		@card4 =
-			type: "flight SK22"
+			type: "flight"
+			number: "SK22"
 			from: "Stockholm"
 			to: "New York JFK"
 			seat: "7B"

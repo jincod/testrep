@@ -33,7 +33,8 @@
 	for card in cards
 		seat = if card.seat then "Seat " + card.seat + "." else "No seat assignment."
 		comments = if card.comments then " " + card.comments else ""
-		str = "Take " + card.type + " from " + card.from + " to " + card.to + ". " + seat + comments
+		number = if card.number then " " + card.number else ""
+		str = "Take " + card.type + number + " from " + card.from + " to " + card.to + ". " + seat + comments
 		result.push str
 		console.log str
 	console.log "*****************************"

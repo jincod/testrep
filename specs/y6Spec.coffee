@@ -1,3 +1,35 @@
+describe "y6 dom specs", () ->
+	beforeEach () ->
+		@testId = "testId"
+		@testClass = "testClass"
+		div = document.createElement "div"
+		div.setAttribute "id", @testId
+		document.body.appendChild div
+		div = document.createElement "div"
+		div.setAttribute "class", @testClass
+		document.body.appendChild div
+		p = document.createElement "p"
+		document.body.appendChild p
+
+	afterEach () ->
+		node = document.getElementById @testId
+		if node.parentNode
+  			node.parentNode.removeChild node
+		node = document.getElementsByClassName @testClass
+		if node.parentNode
+  			node.parentNode.removeChild node
+		node = document.getElementsByTagName "p"
+		if node.parentNode
+  			node.parentNode.removeChild node
+
+	it "Test 1", () ->
+		expect(y6.dom("#" + @testId).elems[0]).toEqual(document.getElementById(@testId))
+		expect(y6.dom("." + @testClass).elems[0]).toEqual(document.getElementsByClassName(@testClass)[0])
+		expect(y6.dom("p").elems[0]).toEqual(document.getElementsByTagName("p")[0])
+		expect(y6.dom("#element_is_null").elems[0]).toEqual(undefined)
+		expect(y6.dom(".element_is_null").elems[0]).toEqual(undefined)
+
+
 describe "y6 css class specs", () ->
 
 	beforeEach () ->
@@ -7,7 +39,7 @@ describe "y6 css class specs", () ->
 		div = document.createElement "div"
 		div.setAttribute "id", @testId1
 		document.body.appendChild div
-		@testEl = y6.dom @testId1
+		@testEl = y6.dom "#" + @testId1
 
 	afterEach () ->
 		node = document.getElementById @testId1

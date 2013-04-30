@@ -2,12 +2,23 @@
   
 	win.y6 = {}
 
+	regexp =
+		Tag: /^[-_a-z0-9]+$/i
+		Class: /^\.[-_a-z0-9]+$/i
+		Id: /^#[-_a-z0-9]+$/i
+
 	Dom = (selector, context = null) ->
 		if not (this instanceof Dom)
 			return new Dom selector, context
 
-		@elems = document.getElementById selector
-		@elems = if @elems then [@elems] else []
+		if selector.match regexp.Id
+			@elems = document.getElementById(selector.substr(1))
+			@elems = if @elems then [@elems] else []
+		if selector.match regexp.Class
+			@elems = document.getElementsByClassName(selector.substr(1))
+		if selector.match regexp.Tag
+			@elems = document.getElementsByTagName selector
+
 		return this
 
 

@@ -81,7 +81,11 @@ describe "TravelCardSorterSpecs", () ->
 
 	it "Throw if some cards are lost", ()->
 		cards = [@card4, @card1, @card3]
-		expect(()-> TravelCardSorter cards).toThrow()
+		expect(() -> TravelCardSorter cards).toThrow()
+
+	it "Throw if some cards are lost 2", ()->
+		cards = [@card1, @card4]
+		expect(() -> TravelCardSorter cards).toThrow()
 
 
 	describe "ResultFormatterSpecs", () ->

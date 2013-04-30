@@ -23,7 +23,10 @@
 		last = result[result.length - 1]
 		if not last
 			throw "Some cards are lost"
-		result.push GetCardByTo last.to, cards
+		next = GetCardByTo last.to, cards
+		if not next
+			throw "Some cards are lost"
+		result.push next
 		break if (result.length is cards.length)
 
 	return result;

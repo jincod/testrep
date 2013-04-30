@@ -31,13 +31,21 @@
 
 	return result;
 
+template = "Take {{cardtype}}{{number}} from {{cardfrom}} to {{cardto}}. {{seat}}{{comments}}"
+
 @ResultFormatter = (cards) ->
 	result = []
 	for card in cards
 		seat = if card.seat then "Seat " + card.seat + "." else "No seat assignment."
 		comments = if card.comments then " " + card.comments else ""
 		number = if card.number then " " + card.number else ""
-		str = "Take " + card.type + number + " from " + card.from + " to " + card.to + ". " + seat + comments
+		str = template
+			.replace("{{cardtype}}", card.type)
+			.replace("{{number}}", number)
+			.replace("{{cardfrom}}", card.from)
+			.replace("{{cardto}}", card.to)
+			.replace("{{seat}}", seat)
+			.replace("{{comments}}", comments);
 		result.push str
 		console.log str
 	console.log "*****************************"

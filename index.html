@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Index</title>
+        <style>
+            #id1 {
+                width: 100px;
+                height: 100px;
+                background-color: grey;
+            }
+            .red {
+                background-color: red !important;
+            }
+            .radius {
+                border-radius: 50px;
+            }
+        </style>
+    </head>
+  
+    <body>
+        <pre>
+            card1 = {
+                type: "train",
+                number: "78A",
+                from: "Madrid",
+                to: "Barcelona",
+                seat: "45B"
+            };
+            card2 = {
+                type: "airport bus",
+                from: "Barcelona",
+                to: "Gerona Airport"
+            };
+            card3 = {
+                type: "flight",
+                number: "SK455",
+                from: "Gerona Airport",
+                to: "Stockholm",
+                seat: "3A",
+                comments: "Gate 45B. Baggage drop at ticket counter 344."
+            };
+            card4 = {
+                type: "flight",
+                number: "SK22",
+                from: "Stockholm",
+                to: "New York JFK",
+                seat: "7B",
+                comments: "Gate 22. Baggage will be automatically transferred from your last leg."
+            };
+        </pre>
+        <input type="text" name="cardSort" placeholder="take order card 1,4,2,3">
+        <a href="javascript:sort();">Sort</a>
+        <pre id="html-formatter-result"></pre>
+        <div>
+            <h2>Sample work with css class</h2>
+            <div id="id1"></div>
+        </div>
+        <a href="javascript:y6.dom('id1').addClass('red');">Add red class</a>
+        <a href="javascript:y6.dom('id1').removeClass('red');">Remove red class</a>
+        <a href="javascript:y6.dom('id1').toggleClass('radius');">Add toggle radius</a>
+        <a href="javascript:alert(y6.dom('id1').hasClass('red'));">Has red class</a>
+        <script type="text/javascript" src="src/src.js"></script>
+        <script type="text/javascript">
+            cards = {
+                "1" : {
+                    type: "train",
+                    number: "78A",
+                    from: "Madrid",
+                    to: "Barcelona",
+                    seat: "45B"
+                },
+                "2" : {
+                    type: "airport bus",
+                    from: "Barcelona",
+                    to: "Gerona Airport"
+                },
+                "3" : {
+                    type: "flight",
+                    number: "SK455",
+                    from: "Gerona Airport",
+                    to: "Stockholm",
+                    seat: "3A",
+                    comments: "Gate 45B. Baggage drop at ticket counter 344."
+                },
+                "4": {
+                    type: "flight",
+                    number: "SK22",
+                    from: "Stockholm",
+                    to: "New York JFK",
+                    seat: "7B",
+                    comments: "Gate 22. Baggage will be automatically transferred from your last leg."
+                }                
+            }
+            var sort = function() {
+                var input = document.getElementsByName("cardSort")[0].value;
+                var orderCard = input.split(',')
+                var inputCardArray = []
+                for (var i = 0; i < orderCard.length; i++) {
+                    inputCardArray.push(cards[orderCard[i]])
+                };
+                try{
+                    var sortedCards = TravelCardSorter(inputCardArray);
+                    resultEl = document.getElementById("html-formatter-result");
+                    resultEl.innerHTML = ResultFormatter(sortedCards).join("\n");
+                } catch(e){
+                    alert(e);
+                }
+            }
+        </script>
+    </body>
+</html>

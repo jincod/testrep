@@ -94,7 +94,7 @@
             }
             var sort = function() {
                 var input = document.getElementsByName("cardSort")[0].value;
-                var orderCard = input.split(',')
+                var orderCard = input.replace(/\s/gi,'').split(',')
                 var inputCardArray = []
                 for (var i = 0; i < orderCard.length; i++) {
                     inputCardArray.push(cards[orderCard[i]])

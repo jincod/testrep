@@ -1,10 +1,6 @@
 module.exports = (grunt) ->
 
-    grunt.initConfig({
-        # concat:
-        #     dist:
-        #         src: 'specs/**/*.js'
-        #         dest: 'specs.js'
+    grunt.initConfig
         coffee:
             compile:
                 files:
@@ -18,12 +14,10 @@ module.exports = (grunt) ->
             specs:
                 files: ["src/**/*.coffee", "specs/**/*.coffee"]
                 tasks: ["coffee", "jasmine"]
-    })
 
-    grunt.loadNpmTasks('grunt-contrib-concat')
-    grunt.loadNpmTasks('grunt-contrib-jasmine')
-    grunt.loadNpmTasks('grunt-contrib-watch')
-    grunt.loadNpmTasks('grunt-contrib-coffee')
+    grunt.loadNpmTasks 'grunt-contrib-jasmine'
+    grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-contrib-coffee'
 
-    grunt.registerTask('default', 'concat')
-    grunt.registerTask("tests", ["jasmine"])
+    grunt.registerTask 'default', 'concat'
+    grunt.registerTask "tests", ["jasmine"]

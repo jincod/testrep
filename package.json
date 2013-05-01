@@ -2,9 +2,8 @@
   "name": "js-test-runner",
   "version": "0.0.1",
   "private": "true",
-  "dependencies": {
+  "devDependencies": {
     "grunt": "*",
-    "grunt-contrib-concat": "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-watch": "*",
     "grunt-contrib-jasmine": "*"

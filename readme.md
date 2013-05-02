@@ -8,7 +8,10 @@ build:
 
 tests:
 
-	grunt tests
+	grunt tests 
+	(via phantomjs)
+	or
+	SpecRunner.html
 
 view in browser:
 

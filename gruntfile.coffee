@@ -6,6 +6,9 @@ module.exports = (grunt) ->
                 files:
                     'src/src.js': ['src/*.coffee']
                     'specs/specs.js': ['specs/*.coffee']
+            build:
+                files:
+                    'build/all.js': ['src/*.coffee']
         jasmine:
             src: ['src/**/*.js']
             options:
